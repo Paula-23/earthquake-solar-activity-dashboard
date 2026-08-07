@@ -1,0 +1,45 @@
+# Ignore all python cache files
+__pycache__/
+*.pyc
+
+# Ignore all data files (keeps the folder structure on GitHub, hides the data)
+data/** 
+# Ignore everything inside the data folder recursively
+!data/ 
+# Allow the data folder itself to be seen
+!data/*/ 
+# explicitly not to ignore any subfolders sitting directly inside the data/ directory
+!data/**/*.gitkeep 
+#push my beautiful data folder architecture to GitHub while keeping all the heavy, private data files hidden
+
+# Ignore specific folders
+notebooks/00_initial_messy_scripts/
+
+notebooks/03_NASA_SolarActivity_data/
+notebooks/04_correlation_analysis/
+notebooks/02_GFZ_kpindex_data/
+
+outdated/
+data/tests/
+notebooks/
+docs/figures/
+
+# Ignore specific files
+docs/data_sources_od.md
+docs/presentation/Herrera_EDA_14.04.26.key
+notebooks/01_USGS_Earthquakes_data/05_earthquake_eda.ipynb
+notebooks/notebook_setup.py
+
+# Ignore local environment files if you have them
+.env
+venv/
+.venv/
+
+!data/README.md #Whitelist the specific README file so it gets pushed.
+
+.DS_Store
+
+*.csv
+*.geojson
+*.json
+*.shp
