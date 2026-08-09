@@ -1,15 +1,25 @@
 #  My Capstone Project Setup Documentation 
 ### Do geomagnetic storms correlate with earthquakes?
 
+## Author
+
+**Paula Herrera** · [LinkedIn](https://www.linkedin.com/in/pshepm/) · [Scientific Articles](https://pubmed.ncbi.nlm.nih.gov/?term=herrera+espejel)
+Data Analytics Bootcamp Capstone · [NeueFische](https://www.neuefische.de/) · Nov.2025–Dec.2026
+
+---
+
 An interactive Streamlit dashboard exploring the statistical relationship between
 solar-driven geomagnetic activity (GFZ Kp index) and global earthquake patterns (USGS),
 built as a data analytics capstone project (2025–2026).
+
+> **Full project brief →** Check my [docs/About.md](docs/About.md)!
+
+> **Product Slide Deck →** Check my [docs/Herrera_EDA_260414.md](docs/presentation/Herrera_EDA_260414.pdf)!
 
 > **Live app demo**
 
 ![Storm & Quake dashboard demo](https://github.com/user-attachments/assets/11bd4bca-0eb7-42d8-b72f-a438b4de78d6)
 
-> **Full project brief →** Check my [docs/About.md](docs/About.md)!
 ---
 
 ## What it does
@@ -195,13 +205,6 @@ git add .
 git commit -m "descriptive message"
 git push
 ```
-
----
-
-## Author
-
-**Paula Herrera** · [LinkedIn](https://www.linkedin.com/in/pshepm/) · [Scientific Articles](https://pubmed.ncbi.nlm.nih.gov/?term=herrera+espejel)
-Data Analytics Bootcamp Capstone · [NeueFische](https://www.neuefische.de/) · Nov.2025–Dec.2026
 
 ---
 

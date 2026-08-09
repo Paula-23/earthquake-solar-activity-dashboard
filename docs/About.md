@@ -3,29 +3,28 @@
 > *Can solar-driven electromagnetic activity influence earthquake patterns on Earth
 > or is any apparent overlap just coincidence?*
 
-> This project investigates earthquake and solar activity events through eleven years of open scientific data, interactive visualisations, and a museum-inspired Streamlit dashboard.
+> This project investigates earthquake and solar activity events through eleven years of open scientific data, interactive visualisations, and a museum-inspired Streamlit dashboard app.
 
-🌈⃤. Paula Herrera  
-    2026.02.17 (updated 2026.08.08)
+Paula Herrera  | 2026.02.17 (updated 2026.08.08) 🌈⃤. 
 ---
 
 ## The Concept
 
-A fictional professional scientific institute wants to present earthquake and solar-activity data on their website as an immersive, museum-like dashboard: one that lets visitors *explore* rather than simply read. This Streamlit application is the first minimal version of that product, developed as part of a data analytics bootcamp capstone project.
+A fictional professional scientific institute wants to present earthquake and solar-activity data on their website as an immersive, museum-like dashboard: one that lets visitors *explore* rather than simply read. This Streamlit application is the first minimal version of that product, developed as part of my data analytics bootcamp capstone project.
 
-The aim of the project was to design and develop the full pipeline from raw API ingestion to a first polished interactive interface providing key metrics and statistics for exploring earthquakes and solar activity. 
+The aim of the project was to design and develop the full pipeline from raw API ingestion to a first polished interactive interface providing key metrics and statistics for exploring earthquakes and solar activity across the world. 
 
 ---
 
 ## Research Background 🕵️‍♂️
 
 Ancient Mesoamerican cultures believed celestial phenomena influenced events on Earth.
-Modern geophysics revisits this intuition rigorously: a 2020 hypothesis proposes that
+Modern geophysics revisits this intuition with quantitative and sensor-based methodologies: a 2020 hypothesis proposes that
 geomagnetic storms may disturb the ionosphere in ways that induce electrical currents
-in the Earth's crust, potentially nudging already-stressed tectonic faults.
+in the Earth's crust, potentially triggering already-stressed tectonic faults and affecting activity in our lithosphere.
 
 This project investigates whether such a relationship is empirically observable using
-publicly available data from USGS and GFZ Potsdam.
+publicly available data from USGS and GFZ Potsdam!
 
 **Selected literature**
 
@@ -37,9 +36,15 @@ publicly available data from USGS and GFZ Potsdam.
 
 ## Hypotheses
 
-**H1 — Solar-time signal.** If solar electromagnetic forces influence earthquake timing, events should cluster around specific *local solar hours* at the epicentre rather than appearing uniformly distributed across the day. Testing this required converting every UTC timestamp to Local Mean Solar Time using the epicentre's longitude (`LST = UTC + longitude ÷ 15`, mod 24).
+> **H1 — Solar-time signal.** If solar electromagnetic forces influence earthquake timing, events should cluster around specific *local solar hours* at the epicentre rather than appearing uniformly distributed across the day.   
 
-**H2 — Intersectional filter.** Any solar influence would likely be category-specific. That is, patterns may be visible only when filtering by magnitude class, depth regime, tectonic setting, or latitude zone rather than a global signal across all earthquake types. This requiered chosing and testing category sizes. The aim was to apply intersectional theory to earthquake characteristics.
+H1 requires converting every UTC timestamp to Local Mean Solar Time using the epicentre's longitude.
+The formula to calculate local solar time is $LST = \text{UTC} + \frac{\text{Longitude}}{15}$ where longitude is in degrees.
+
+
+> **H2 — Intersectional filter.** Any solar influence would likely be category-specific. That is, patterns may be visible only when filtering by magnitude class, depth regime, tectonic setting, or latitude zone rather than a global signal across all earthquake types. 
+
+H2 requiered chosing and testing different categories (magintude, depth in km, latitude band, etc.). The aim was to apply intersectional theory to earthquake characteristics and test the conditionality of H1.
 
 ---
 
@@ -113,16 +118,15 @@ All stages are documented in numbered Jupyter notebooks under `notebooks/`.
 
 ### 1 · UTC to Local Solar Time
 
-**Situation.** USGS and GFZ log every event in UTC. Investigating whether solar position at the moment of an earthquake matters requires converting each timestamp to the *local solar time* at the epicentre — not the local clock time, which is distorted by political timezone boundaries and daylight saving shifts.
+**Situation.** USGS and GFZ log every event in UTC. Investigating whether solar position at the moment of an earthquake matters requires converting each timestamp to the *local solar time* at the epicentre (i.e., not the local clock time, which is distorted by political timezone boundaries and daylight saving shifts).
 
-**Action.** Derived Local Mean Solar Time analytically:
+**Action.** Derived Local Mean Solar Time ($\text{LMST}$) analytically:
 
-```
-LST (hours) = UTC_decimal_hour + (longitude ÷ 15)   [mod 24]
-```
+$$\text{LMST} = \text{UTC} + \frac{\text{Longitude}}{15}$$
 
-Earth rotates 15° per hour, so dividing longitude by 15 converts geographic position
-directly to a solar-hour offset. Each earthquake was re-stamped to this solar reference frame, enabling the `lst_hour`, `is_daylight`, and latitude-zone rose diagrams.
+*(Note: Longitude is expressed in degrees, where East is positive and West is negative).*
+
+Earth rotates 15° per hour, so dividing longitude by 15 converts geographic position directly to a solar-hour offset. Each earthquake was re-stamped to this solar reference frame, enabling the `lst_hour` (lmst), `is_daylight`, and latitude-zone rose diagrams.
 
 **Result.** Enabled precise circadian analysis on any combination of location, depth,
 magnitude class, and tectonic setting to assess Hypothesis 1.
