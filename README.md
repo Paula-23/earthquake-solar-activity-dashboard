@@ -7,7 +7,7 @@ built as a data analytics capstone project (2025–2026).
 
 > **Live app demo**
 
-![Storm & Quake dashboard demo](docs/figures//demo.gif?v=1)
+![Storm & Quake dashboard demo](https://github.com/user-attachments/assets/11bd4bca-0eb7-42d8-b72f-a438b4de78d6)
 
 > **Full project brief →** Check my [docs/About.md](docs/About.md)!
 ---
