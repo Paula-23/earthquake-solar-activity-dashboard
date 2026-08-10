@@ -1,15 +1,18 @@
 #  My Capstone Project Setup Documentation 
-### Do geomagnetic storms correlate with earthquakes?
 
-## Author
+### Engineering an ELT pipeline and interactive dashboard to analyze global seismicity and geomagnetic activity: An intersectional exploration of earthquake characteristics across localized solar times and Planetary K-indices (solar particle radiation).
+
+---
+
+### Author
 
 **Paula Herrera** · [LinkedIn](https://www.linkedin.com/in/pshepm/) · [Scientific Articles](https://pubmed.ncbi.nlm.nih.gov/?term=herrera+espejel)
 Data Analytics Bootcamp Capstone · [NeueFische](https://www.neuefische.de/) · Nov.2025–Dec.2026
 
 ---
 
-An interactive Streamlit dashboard exploring the statistical relationship between
-solar-driven geomagnetic activity (GFZ Kp index) and global earthquake patterns (USGS),
+An interactive Streamlit dashboard exploring statistical patterns between
+solar-driven geomagnetic activity (GFZ Kp index) and global earthquake characteristics (e.g., magnitude, depth in km, location, etc.) (USGS),
 built as a data analytics capstone project (2025–2026).
 
 > **Full project brief →** Check my [docs/About.md](docs/About.md)!
