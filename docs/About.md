@@ -133,16 +133,19 @@ magnitude class, and tectonic setting to assess Hypothesis 1.
 
 ---
 
-### 2 · Temporal Resolution Mismatch
+### 2 · Temporal Resolution Mismatch (Many-to-One Alignment)
 
 **Situation.** USGS events are timestamped to the millisecond; GFZ Kp intervals are
 3-hourly averages. A naive join would produce many-to-one duplicates or lose the
 earthquake-level granularity.
 
-**Action.** Floored each earthquake's UTC timestamp to the nearest 3-hour boundary:
+**Action.** I used a "time-bucketing" strategy. I floored each earthquake’s UTC timestamp to its corresponding 3-hour boundary before executing a left-join
 
 ```python
+# Floor timestamps to align millisecond data with 3-hour intervals
 eq["kp_interval"] = eq["start_time"].dt.floor("3h")
+
+# Left join to preserve unique earthquake records
 merged = eq.merge(kp, left_on="kp_interval", right_on="start_time", how="left")
 ```
 
@@ -150,8 +153,7 @@ Left join preserves every earthquake; Kp columns (`kp`, `kp_category`, `storm`,
 `subsolar_lat/lon`) are appended to each event row reflecting concurrent geomagnetic
 conditions.
 
-**Result.** A single analysis-ready merged table with no row loss and no duplicates,
-covering 335,000 events across 35,000 Kp intervals.
+**Result.** Created a single, analysis-ready table of 335,000 events mapped across 35,000 Kp intervals. Every earthquake record was successfully preserved with zero row loss and zero synthetic duplicates.
 
 ---
 
@@ -164,6 +166,14 @@ All CSS was developed iteratively ("vibe coded") using Claude as a pair programm
 as it was my first experience with CSS-in-Python! Very interesting to see how AI can help code a first version of a streamlit app...
 
 **Result.** A minimal version of my museum-like product wrapper that transformed my standard Python script into a consumer-grade dashboard.
+
+---
+
+### 4 · Architectural Paradigm: Shifting from ETL to ELT
+**ELT (Extract, Load, Transform)** 
+When building data projects, you can either clean the data before saving it (ETL) or after saving it (ELT). I chose the second option (ELT), and here is how it works: 
+- Extract & Load (EL): I downloaded the files from the global websites and saved them directly into my project folders in their original, untouched formats.  
+- Transform (T): Then, I loaded those original files into Python to clean them, remove noise, create a tidy version, and calculate new variables (like local day vs. night time).  
 
 ---
 
